@@ -4,3 +4,13 @@
 # React Router
 /.react-router/
 /build/
+
+/.idea
+/.idea/*
+/.cache
+/build
+.env
+.env.local
+.react-router/
+public
+manifest/backend.db
