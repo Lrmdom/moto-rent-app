@@ -10,14 +10,14 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { Bike } from "lucide-react";
 import React from "react";
-import { Link } from "react-router";
+import { Bike } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import { SanityVisualEditing } from "~/sanity/SanityVisualEditing";
 
 import { previewContext } from "~/sanity/preview";
-import { Suspense, lazy } from "react";
+import Navbar from "./components/responsiveNav";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -60,43 +60,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <div className="min-h-screen bg-white">
-          <nav className="bg-black text-white py-6">
-            <div className="container mx-auto px-6">
-              <div className="flex items-center justify-between">
-                <Link to="/" className="flex items-center space-x-2">
-                  <Bike className="w-8 h-8" />
-                  <span className="text-2xl font-bold">RideRental</span>
-                </Link>
-                <div className="hidden md:flex space-x-8">
-                  <Link to="/" className="hover:text-gray-300">
-                    Home
-                  </Link>
-                  <Link to="/vehicles" className="hover:text-gray-300">
-                    Vehicles
-                  </Link>
-                  <Link to="/locations" className="hover:text-gray-300">
-                    Locations
-                  </Link>
-                  <Link to="/about" className="hover:text-gray-300">
-                    About
-                  </Link>
-
-                  <Link
-                    to={{
-                      pathname: "/contact",
-                      search: "?query=string",
-                      hash: "#hash",
-                    }}
-                  >
-                    Contact
-                  </Link>
-                </div>
-                <button className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-gray-100">
-                  <Link to={"book"}>Book Now</Link>
-                </button>
-              </div>
-            </div>
-          </nav>
+          <Navbar></Navbar>
           {children}
           <footer className="bg-black text-white py-12">
             <div className="container mx-auto px-6">

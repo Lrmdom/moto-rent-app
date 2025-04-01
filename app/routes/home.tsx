@@ -9,6 +9,7 @@ import {
   Star,
 } from "lucide-react";
 import type { Route } from "./+types/home";
+import { useTranslation } from 'react-i18next';
 
 import type { SanityDocument } from "@sanity/client";
 import { loadQuery } from "~/sanity/loader";
@@ -27,6 +28,8 @@ export async function loader({ request }: Route.LoaderArgs) {
 
 function HomePage({ loaderData }: Route.ComponentProps) {
   //const { data } = useQuery(VEHICLES, {}, { initial: loaderData });
+
+  const { t } = useTranslation();
 
   console.log(loaderData);
   return (
@@ -59,7 +62,6 @@ function HomePage({ loaderData }: Route.ComponentProps) {
           <div className="grid md:grid-cols-4 gap-6">
             <div className="flex items-center space-x-3">
               <MapPin className="w-5 h-5 text-gray-500" />
-              <div></div>
               <select className="w-full p-2 border rounded">
                 <option>Select Location</option>
                 <option>Downtown</option>
